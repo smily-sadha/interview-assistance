@@ -1,0 +1,32 @@
+# --- Glass Assistant dependencies ---
+# UI: transparent always-on-top window
+PyQt6==6.7.1
+
+# Screen capture (fast screenshots)
+mss==9.0.1
+Pillow==10.4.0
+
+# Global hotkeys (work even when the app is not focused)
+pynput==1.7.7
+
+# Voice input (microphone capture + voice-activity detection)
+sounddevice==0.4.7           # records from the mic
+soundcard==0.4.3             # records SYSTEM audio (Zoom/Meet) via WASAPI loopback
+numpy==1.26.4                # audio buffer math + resampling
+webrtcvad-wheels==2.0.14     # detects when speech starts/stops (VAD)
+
+# Local speech-to-text (offline after first model download). Gives live
+# partial captions. Groq Whisper stays as an automatic fallback.
+faster-whisper==1.0.3
+
+# Read API keys from a .env file
+python-dotenv==1.0.1
+
+# LLM providers
+google-genai==1.2.0          # Main model  -> Google Gemini (vision)
+groq==0.11.0                 # Fallback     -> Groq (vision)
+
+# Pin httpx: groq 0.11.0 uses the old `proxies` argument that httpx 0.28+
+# removed. 0.27.2 is the last version that still supports it.
+httpx==0.27.2
+
